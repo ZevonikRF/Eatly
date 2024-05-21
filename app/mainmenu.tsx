@@ -1,3 +1,4 @@
+import Menu from '../components/menu';
 import React, {useState} from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image } from "react-native";
 
@@ -6,6 +7,36 @@ export default function MainMenu() {
   const handlePress = (item) => {
     setSelectedItem(item);
   };
+  // data mockup
+  const menus = [
+    {
+      id: 1,
+      menuname: "Burger Bang Boy",
+      address: "Jl. Indeks No.95/A",
+      opentime: "Pick Up Today | 15.00 - 18.00",
+      rating: 5 ,
+      price: 20000,
+      // image:
+    },
+    {
+      id: 2,
+      menuname: "Nasi Goreng Gemink",
+      address: "Jl. PPAM No.3260",
+      opentime: "Pick Up Today | 10.00 - 12.00",
+      rating: 5 ,
+      price: 13000,
+      // image:
+    },
+    {
+      id: 3,
+      menuname: "Olahan Ayam Bapak Eminem",
+      address: "Jl. Sayangkuh No.8",
+      opentime: "Pick Up Today | 08.00 - 20.00",
+      rating: 4.5 ,
+      price: 22000,
+      // image:
+    },
+  ]
   return (
     <View style={styles.container}>
       <Text style={styles.textDiscover}>Discover</Text>
@@ -36,6 +67,7 @@ export default function MainMenu() {
           <Image source={require('../assets/images/history.png')} />
         </TouchableOpacity>
       </View>
+      <Menu menus={menus}/>
     </View>
   );
 }
@@ -50,12 +82,12 @@ const styles = StyleSheet.create({
     paddingLeft: 55,
     fontWeight: 'bold',
     fontSize: 55,
-    fontFamily: 'Arial',
+    //fontFamily: 'Arial',
   },
   textLocation:{
     paddingLeft: 60,
     fontWeight: 'bold',
-    fontFamily: 'Arial',
+    //fontFamily: 'Arial',
     color: '#9a9a9d',
   },
   changeBox: {
@@ -84,7 +116,7 @@ const styles = StyleSheet.create({
     marginRight: 35,
     color: '#9a9a9d',
     fontSize: 16,
-    fontFamily: 'Arial',
+    //fontFamily: 'Arial',
   },
   selectedItem: {
     color: '#fa4a0c',
