@@ -1,9 +1,9 @@
 import Menu from '../components/menu';
 import React, {useState} from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Image } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView } from "react-native";
 
 export default function MainMenu() {
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedItem, setSelectedItem] = useState('Nearby');
   const handlePress = (item) => {
     setSelectedItem(item);
   };
@@ -11,30 +11,36 @@ export default function MainMenu() {
   const menus = [
     {
       id: 1,
-      menuname: "Burger Bang Boy",
+      restoname: "Burger Bang Boy",
       address: "Jl. Indeks No.95/A",
       opentime: "Pick Up Today | 15.00 - 18.00",
       rating: 5 ,
       price: 20000,
-      // image:
+      image: require('../assets/images/wutdidijustsee.jpg'),
+      tag1: 'Burger',
+      tag2: 'Fast Food',
     },
     {
       id: 2,
-      menuname: "Nasi Goreng Gemink",
+      restoname: "Nasi Goreng Gemink",
       address: "Jl. PPAM No.3260",
       opentime: "Pick Up Today | 10.00 - 12.00",
       rating: 5 ,
       price: 13000,
-      // image:
+      image: require('../assets/images/pz7qltuhh9g71.png'),
+      tag1: 'Rice',
+      tag2: 'Local Food',
     },
     {
       id: 3,
-      menuname: "Olahan Ayam Bapak Eminem",
+      restoname: "Olahan Ayam Bapak Eminem",
       address: "Jl. Sayangkuh No.8",
       opentime: "Pick Up Today | 08.00 - 20.00",
       rating: 4.5 ,
       price: 22000,
-      // image:
+      image: require('../assets/images/15-753v0_20101214.jpg'),
+      tag1: 'Chicken',
+      tag2: 'Fast Food',
     },
   ]
   return (
@@ -67,7 +73,11 @@ export default function MainMenu() {
           <Image source={require('../assets/images/history.png')} />
         </TouchableOpacity>
       </View>
-      <Menu menus={menus}/>
+      <ScrollView contentContainerStyle={styles.scrollViewContent}>
+        {menus?.map((item,index) => (
+          <Menu key={index} item={item}/>
+        ))}
+      </ScrollView>
     </View>
   );
 }
@@ -123,11 +133,14 @@ const styles = StyleSheet.create({
   },
   bottomNav:{
     position: 'absolute',
-    bottom: 20,
+    bottom: 0,
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
+    backgroundColor: '#fff8f2', 
+    paddingVertical: 10, 
+    zIndex: 10,
   },
   navItem: {
     flex: 1,
@@ -136,5 +149,8 @@ const styles = StyleSheet.create({
   navImage: {
     width: 24,
     height: 24,
+  },
+  scrollViewContent: {
+    paddingBottom: 70, 
   },
 });

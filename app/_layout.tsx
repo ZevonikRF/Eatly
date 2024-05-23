@@ -9,6 +9,7 @@ export default function LandingLayout() {
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }}/>
       <Stack.Screen name="mainmenu" options={{ headerShown: false }}/>
+      <Stack.Screen name="menuprofile" options={{ headerShown: false }}/>
     </Stack>
   );
 }
