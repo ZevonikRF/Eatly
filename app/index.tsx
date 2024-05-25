@@ -3,24 +3,29 @@ import { Text, View, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 
-
 export default function Index() {
   const router = useRouter();
+
+  const handleGetStarted = () => {
+    router.push('/(auth)/login');
+  };
+
   return (
     <LinearGradient
       colors={['#ffffff', '#fad3b6']}
       style={styles.container}
     >
       <Image 
-      source={require('../assets/images/logo-eatly.png')}
-      style={[styles.image, styles.imageMargin]}
+        source={require('../assets/images/logo-eatly.png')}
+        style={[styles.image, styles.imageMargin]}
       />
       <Image 
-      source={require('../assets/images/mark-eatly.png')}
+        source={require('../assets/images/mark-eatly.png')}
       />
       <TouchableOpacity 
-      style={styles.button}
-      onPress={() => router.push('/mainmenu')}>
+        style={styles.button}
+        onPress={handleGetStarted}
+      >
         <Text style={styles.buttonText}>Get Started</Text>
       </TouchableOpacity>
     </LinearGradient>
