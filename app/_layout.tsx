@@ -12,6 +12,8 @@ export default function Layout() {
       <Stack.Screen name="(auth)/login" options={{ headerShown: false }} />
       <Stack.Screen name="(auth)/register" options={{ headerShown: false }} />
       <Stack.Screen name="mainmenu" options={{ headerShown: false }} />
+      <Stack.Screen name="myprofile" options={{ headerShown: false }} />
+      <Stack.Screen name="changeprofile" options={{ headerShown: false }} />
       <Stack.Screen name="menuprofile" options={{ headerShown: false }} />
     </Stack>
   );
