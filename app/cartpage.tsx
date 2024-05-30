@@ -22,7 +22,7 @@ export default function Cart() {
     },
   ]);
 
-  const handleQuantityChange = (id : any, delta : any) => {
+  const handleQuantityChange = (id: any, delta: any) => {
     setCartItems(prevItems => {
       return prevItems.map(item => {
         if (item.id === id) {
@@ -43,7 +43,12 @@ export default function Cart() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Cart</Text>
+      <View style={styles.headerContainer}>
+        <TouchableOpacity onPress={() => router.push('/mainmenu')}>
+          <Image source={{ uri: '../assets/images/back_arrow.png' }} style={styles.backArrowImage} />
+        </TouchableOpacity>
+        <Text style={styles.header}>Cart</Text>
+      </View>
       <Text style={styles.swipeText}>swipe on an item to delete</Text>
       <ScrollView>
         {cartItems.map(item => (
@@ -78,10 +83,20 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff8f2',
     paddingHorizontal: 20,
   },
+  headerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 40,
+    marginBottom: 20,
+  },
+  backArrowImage: {
+    width: 30,
+    height: 30,
+    marginRight: 10,
+  },
   header: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginVertical: 20,
   },
   swipeText: {
     fontSize: 14,
