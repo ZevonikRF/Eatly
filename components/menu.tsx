@@ -18,6 +18,12 @@ export default function Menu({item}) {
                     image: item.image,
                     tag1: item.tag1,
                     tag2: item.tag2,
+                    whatYouGet1item: item.whatYouGet1item,
+                    whatYouGet2item: item.whatYouGet2item,
+                    whatYouGet3item: item.whatYouGet3item,
+                    whatYouGet1image: item.whatYouGet1image,
+                    whatYouGet2image: item.whatYouGet2image,
+                    whatYouGet3image: item.whatYouGet3image,
                 }})}>
             <Image style={styles.menuImage} source={{uri: item?.image}}/>
             <View style={styles.textAll}>
@@ -37,16 +43,32 @@ export default function Menu({item}) {
 
 const styles = StyleSheet.create({
     menuContainerBox:{
-        flex: 1,
-        marginLeft: 60,
-        marginTop: 20,
-        backgroundColor: '#F0F0F0',
-        width: 300,
-        height: 20,
+        //flex: 1,
+        //marginLeft: 60,
+        //marginTop: 20,
+        //backgroundColor: '#ffffff',
+        //width: 300,
+        //height: 20,
+        //borderRadius: 20,
+        flexDirection: 'row',
+        backgroundColor: '#ffffff',
+        borderRadius: 10,
+        padding: 15,
+        marginBottom: 20,
+        width: '100%',
+        alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 5,
+        elevation: 3,        
     },
     menuImage:{
-
         aspectRatio: 6/4,
+        width: 80,
+        height: 80,
+        borderRadius: 10,
+        marginRight: 15,
     },
     textAll:{
         

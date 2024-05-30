@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
+import Menu from '@/components/menu';
 
 export default function MainMenu() {
   const [selectedItem, setSelectedItem] = useState('Nearby');
@@ -37,11 +38,18 @@ export default function MainMenu() {
       image: require('../assets/images/burger.jpeg'), 
       tag1: 'Burger',
       tag2: 'Fast Food',
-      whatYouGet: [
+      /*whatYouGet: [
         { item: 'Burger', image: require('../assets/images/burger-1.jpeg') },
         { item: 'French Fries', image: require('../assets/images/fries.jpg') },
         { item: 'Coca Cola', image: require('../assets/images/cocacola.jpeg') }
-      ]
+      ],*/
+      whatYouGet1item: 'Burger',
+      whatYouGet2item: 'French Fries',
+      whatYouGet3item: 'Coca Cola',
+      whatYouGet1image: require('../assets/images/burger-1.jpeg'),
+      whatYouGet2image: require('../assets/images/fries.jpg'),
+      whatYouGet3image: require('../assets/images/cocacola.jpeg'),
+      
     },
     {
       id: 2,
@@ -53,11 +61,17 @@ export default function MainMenu() {
       image: require('../assets/images/nasigoreng.jpeg'), 
       tag1: 'Rice',
       tag2: 'Local Food',
-      whatYouGet: [
+      /*whatYouGet: [
         { item: 'Nasi Goreng', image: require('../assets/images/nasigoreng.jpeg') },
-        { item: 'Kerupuk', image: require('../assets/images/kerupuk.jpeg') },
-        { item: 'Es Teh Manis', image: require('../assets/images/icetea.jpeg') }
-      ]
+        { item: 'Kerupuk', image: require('../assets/images/kerupuk.jpg') },
+        { item: 'Es Teh Manis', image: require('../assets/images/icetea.jpg') }
+      ],*/
+      whatYouGet1item: 'Nasi Goreng',
+      whatYouGet2item: 'Kerupuk',
+      whatYouGet3item: 'Es Teh Manis',
+      whatYouGet1image: require('../assets/images/nasigoreng.jpeg'),
+      whatYouGet2image: require('../assets/images/kerupuk.jpg'),
+      whatYouGet3image: require('../assets/images/icetea.jpg'),
     },
     {
       id: 3,
@@ -69,18 +83,24 @@ export default function MainMenu() {
       image: require('../assets/images/friedchicken.jpeg'),
       tag1: 'Chicken',
       tag2: 'Fast Food',
-      whatYouGet: [
-        { item: 'Chicken Wings', image: require('../assets/images/chickenwings-1.jpeg') },
-        { item: 'Rice', image: require('../assets/images/rice.jpeg') },
-        { item: 'Sauce', image: require('../assets/images/sauce.jpeg') }
-      ]
+      /*whatYouGet: [
+        { item: 'Chicken Wings', image: require('../assets/images/chickenwings.jpg') },
+        { item: 'Rice', image: require('../assets/images/rice.jpg') },
+        { item: 'Sauce', image: require('../assets/images/sauce.jpg') }
+      ],*/
+      whatYouGet1item: 'Chicken Wings',
+      whatYouGet2item: 'Rice',
+      whatYouGet3item: 'Sauce',
+      whatYouGet1image: require('../assets/images/chickenwings.jpg'),
+      whatYouGet2image: require('../assets/images/rice.jpg'),
+      whatYouGet3image: require('../assets/images/sauce.jpg'),
     },
   ];
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity>
+        {/*<TouchableOpacity>
           <Image
             source={require('../assets/images/menu.png')} 
             style={styles.menuIcon}
@@ -93,6 +113,22 @@ export default function MainMenu() {
             style={styles.cartIcon}
           />
         </TouchableOpacity>
+      </View>*/}
+        <TouchableOpacity>
+          <Image
+            source={require('../assets/images/menu.png')} 
+            style={styles.menuIcon}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Image
+            source={require('../assets/images/cart.png')} 
+            style={styles.cartIcon}
+          />
+        </TouchableOpacity>
+      </View>
+      <View style={styles.discoverContainer}>
+        <Text style={styles.textDiscover}>Discover</Text>
       </View>
       <View style={styles.locationContainer}>
         <Image
@@ -111,7 +147,8 @@ export default function MainMenu() {
           </TouchableOpacity>
         ))}
       </View>
-      <ScrollView contentContainerStyle={styles.scrollViewContent}>
+      {/*ini udah ada di komponen menu gausah dibuat lagi harusnya 😭*/}
+      {/*<ScrollView contentContainerStyle={styles.scrollViewContent}>
         {menus?.map((item, index) => (
           <TouchableOpacity key={index} style={styles.menuContainer} onPress={() => handleNavigateToMenuProfile(item)}>
             <Image source={item.image} style={styles.menuImage} />
@@ -124,6 +161,13 @@ export default function MainMenu() {
             </View>
           </TouchableOpacity>
         ))}
+      </ScrollView>*/}
+      <ScrollView contentContainerStyle={styles.scrollViewContent}>
+      <View>
+        {menus?.map((item,index) => (
+          <Menu key={index} item={item}/>
+        ))}
+      </View>
       </ScrollView>
       <View style={styles.bottomNav}>
         <TouchableOpacity style={styles.navItem} onPress={() => router.push('/mainmenu')}>
@@ -158,10 +202,16 @@ const styles = StyleSheet.create({
   menuIcon: {
     width: 24,
     height: 24,
+    marginLeft: 32,
   },
   cartIcon: {
     width: 24,
     height: 24,
+    marginRight: 30,
+  },
+  discoverContainer:{
+    marginTop: 40,
+    marginLeft: 50,
   },
   textDiscover: {
     fontWeight: 'bold',
@@ -173,6 +223,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
     marginTop: 10,
+    marginLeft: 30,
   },
   locationIcon: {
     width: 20,
@@ -189,6 +240,7 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     paddingHorizontal: 10,
     borderRadius: 15,
+    marginRight: 30,
   },
   changeText: {
     fontWeight: 'bold',
@@ -196,7 +248,7 @@ const styles = StyleSheet.create({
   },
   horizontalList: {
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     marginTop: 20,
   },
   listItem: {
@@ -227,6 +279,7 @@ const styles = StyleSheet.create({
   scrollViewContent: {
     paddingVertical: 20,
     alignItems: 'center',
+    //marginLeft: 70,
   },
   menuContainer: {
     flexDirection: 'row',

@@ -2,13 +2,13 @@ import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 
-export default function MenuProfile() {
+export default function MenuProfile({item}) {
   const router = useRouter();
   const params = useLocalSearchParams();
 
   return (
     <View style={styles.container}>
-      <Image source={{ uri: '../assets/images/burger.jpeg' }} style={styles.image} />
+      <Image source={{ uri: item?.image }} style={styles.image} />
       <TouchableOpacity style={styles.backArrow} onPress={() => router.push('/mainmenu')}>
         <Image source={{ uri: '../assets/images/back_arrow.png' }} style={styles.backArrowImage} />
       </TouchableOpacity>
@@ -19,9 +19,8 @@ export default function MenuProfile() {
         <View style={styles.tagsContainer}>
           <View style={styles.tag}><Text style={styles.tagText}>{params?.tag1}</Text></View>
           <View style={styles.tag}><Text style={styles.tagText}>{params?.tag2}</Text></View>
-          <View style={styles.tag}><Text style={styles.tagText}>{params?.tag3}</Text></View>
         </View>
-        <Text style={styles.price}>{params?.price}</Text>
+        <Text style={styles.price}>Rp. {params?.price}</Text>
       </View>
       <View style={styles.bottomContainer}>
         <View style={styles.section}>
@@ -29,15 +28,15 @@ export default function MenuProfile() {
           <View style={styles.itemsContainer}>
             <View style={styles.item}>
               <Image source={{ uri: '../assets/images/burger.jpeg' }} style={styles.itemImage} />
-              <Text style={styles.itemText}>Burger</Text>
+              <Text style={styles.itemText}>{params?.whatYouGet1item}</Text>
             </View>
             <View style={styles.item}>
               <Image source={{ uri: '../assets/images/fries.jpg' }} style={styles.itemImage} />
-              <Text style={styles.itemText}>Fries</Text>
+              <Text style={styles.itemText}>{params?.whatYouGet2item}</Text>
             </View>
             <View style={styles.item}>
               <Image source={{ uri: '../assets/images/cocacola.jpeg' }} style={styles.itemImage} />
-              <Text style={styles.itemText}>Coca Cola</Text>
+              <Text style={styles.itemText}>{params?.whatYouGet3item}</Text>
             </View>
           </View>
         </View>
