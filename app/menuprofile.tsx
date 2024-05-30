@@ -1,11 +1,11 @@
-import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import React, { useState } from 'react';
+import { Text, View, StyleSheet, TouchableOpacity, Image, Modal, Pressable } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 
 export default function MenuProfile({item}) {
   const router = useRouter();
   const params = useLocalSearchParams();
-
+  const [modalVisible,setModalVisible] = useState(false);
   return (
     <View style={styles.container}>
       <Image source={{ uri: params?.image }} style={styles.image} />
@@ -73,9 +73,18 @@ export default function MenuProfile({item}) {
             </View>
           <Text>The store will provide packing for your food. But, we suggest you to bring your own bag to carry it home.</Text>
         </View>
-        <TouchableOpacity style={styles.buttonContainer} onPress={() => router.push('/cartpage')}>
+        {/*<TouchableOpacity style={styles.buttonContainer} onPress={() => router.push('/cartpage')}>*/}
+        {/*<Pressable style={styles.buttonContainer} onPress={() => setModalVisible(!modalVisible)*/}
+        <Pressable style={styles.buttonContainer} onPress={() => router.push('/cartpage')}>
           <Text style={styles.buttonText}>Add to Cart</Text>
-        </TouchableOpacity>
+        </Pressable>
+        <Modal visible={modalVisible} onRequestClose={() => setModalVisible(!modalVisible)} transparent>
+        <View style={styles.modalBoxContainer}>
+          {/*{item?.map((item,index) => (
+
+          ))}*/}
+        </View>
+      </Modal>
       </View>
     </View>
   );
@@ -220,5 +229,17 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     fontSize: 16,
+  },
+  modalBoxContainer:{
+    width: '45%',
+    height: 500,
+    backgroundColor: '#0f0f0f',
+    position: 'absolute',
+    bottom: 30,
+    borderRadius: 20,
+    marginHorizontal: 50,
+    paddingLeft: 60,
+    alignItems: 'center',
+    
   },
 });
