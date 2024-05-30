@@ -35,7 +35,7 @@ export default function MainMenu() {
       opentime: "Pick Up Today | 15.00 - 18.00",
       rating: 5,
       price: 20000,
-      image: require('../assets/images/burger.jpeg'), 
+      image: 'https://asset.kompas.com/crops/JFC1_i_OaGvcNEviEw4WKk-r3qQ=/12x51:892x637/750x500/data/photo/2022/03/05/622358ed771fb.jpg',
       tag1: 'Burger',
       tag2: 'Fast Food',
       /*whatYouGet: [
@@ -46,9 +46,9 @@ export default function MainMenu() {
       whatYouGet1item: 'Burger',
       whatYouGet2item: 'French Fries',
       whatYouGet3item: 'Coca Cola',
-      whatYouGet1image: require('../assets/images/burger-1.jpeg'),
-      whatYouGet2image: require('../assets/images/fries.jpg'),
-      whatYouGet3image: require('../assets/images/cocacola.jpeg'),
+      whatYouGet1image: 'https://vokasi.co.id/wp-content/uploads/2020/03/burger-beef.jpg',
+      whatYouGet2image: 'https://www.budgetbytes.com/wp-content/uploads/2023/12/air-fryer-french-fries-horizontal-hero-web-ready-1.jpg',
+      whatYouGet3image: 'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//89/MTA-2564071/coca-cola_coca-cola-can-minuman-bersoda--330-ml-_full02.jpg',
       
     },
     {
@@ -58,7 +58,7 @@ export default function MainMenu() {
       opentime: "Pick Up Today | 10.00 - 12.00",
       rating: 5,
       price: 13000,
-      image: require('../assets/images/nasigoreng.jpeg'), 
+      image: 'https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2023/07/13073811/Praktis-dengan-Bahan-Sederhana-Ini-Resep-Nasi-Goreng-Special-1.jpg.webp', 
       tag1: 'Rice',
       tag2: 'Local Food',
       /*whatYouGet: [
@@ -69,9 +69,9 @@ export default function MainMenu() {
       whatYouGet1item: 'Nasi Goreng',
       whatYouGet2item: 'Kerupuk',
       whatYouGet3item: 'Es Teh Manis',
-      whatYouGet1image: require('../assets/images/nasigoreng.jpeg'),
-      whatYouGet2image: require('../assets/images/kerupuk.jpg'),
-      whatYouGet3image: require('../assets/images/icetea.jpg'),
+      whatYouGet1image: 'https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2023/07/13073811/Praktis-dengan-Bahan-Sederhana-Ini-Resep-Nasi-Goreng-Special-1.jpg.webp', 
+      whatYouGet2image: 'https://asset.kompas.com/crops/O_Vgje1nMEqUCaDexq2UJdbyT14=/9x1:989x655/750x500/data/photo/2020/02/21/5e5008d10c825.jpg',
+      whatYouGet3image: 'https://asset.kompas.com/crops/toOljW__-UqEVhGAJe8UyPdZWnU=/92x67:892x600/750x500/data/photo/2023/08/23/64e59deb79bfb.jpg',
     },
     {
       id: 3,
@@ -80,7 +80,7 @@ export default function MainMenu() {
       opentime: "Pick Up Today | 08.00 - 20.00",
       rating: 4.5,
       price: 22000,
-      image: require('../assets/images/friedchicken.jpeg'),
+      image: 'https://www.unileverfoodsolutions.co.id/dam/global-ufs/mcos/SEA/calcmenu/recipes/ID-recipes/chicken-&-other-poultry-dishes/crispy-fried-chicken/Ayam%20Goreng%20Krispy1260x700.jpg',
       tag1: 'Chicken',
       tag2: 'Fast Food',
       /*whatYouGet: [
@@ -91,9 +91,9 @@ export default function MainMenu() {
       whatYouGet1item: 'Chicken Wings',
       whatYouGet2item: 'Rice',
       whatYouGet3item: 'Sauce',
-      whatYouGet1image: require('../assets/images/chickenwings.jpg'),
-      whatYouGet2image: require('../assets/images/rice.jpg'),
-      whatYouGet3image: require('../assets/images/sauce.jpg'),
+      whatYouGet1image: 'https://asset-a.grid.id/crop/0x0:0x0/x/photo/2022/09/23/makan-sayap-ayam-gak-bagus-untuk-20220923071553.jpg',
+      whatYouGet2image: 'https://cdn0-production-images-kly.akamaized.net/muivHaaeAFL2Pa-Kd3NqIedjrQQ=/1200x900/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/1502351/original/039440500_1486629502-kamar_2.jpg',
+      whatYouGet3image: 'https://i0.wp.com/www.kingfrozen.com/wp-content/uploads/2023/07/Saus-Sambal.jpg?fit=1772%2C1772&ssl=1',
     },
   ];
 

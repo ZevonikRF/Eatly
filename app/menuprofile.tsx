@@ -8,7 +8,7 @@ export default function MenuProfile({item}) {
 
   return (
     <View style={styles.container}>
-      <Image source={{ uri: item?.image }} style={styles.image} />
+      <Image source={{ uri: params?.image }} style={styles.image} />
       <TouchableOpacity style={styles.backArrow} onPress={() => router.push('/mainmenu')}>
         <Image source={{ uri: '../assets/images/back_arrow.png' }} style={styles.backArrowImage} />
       </TouchableOpacity>
@@ -16,34 +16,40 @@ export default function MenuProfile({item}) {
         <Text style={styles.title}>{params?.restoname}</Text>
         <Text style={styles.address}>{params?.address}</Text>
         <Text style={styles.pickupTime}>{params?.opentime}</Text>
-        <View style={styles.tagsContainer}>
-          <View style={styles.tag}><Text style={styles.tagText}>{params?.tag1}</Text></View>
-          <View style={styles.tag}><Text style={styles.tagText}>{params?.tag2}</Text></View>
+        <View style={styles.tagsAndPrice}>
+            <View style={styles.tagsContainer}>
+                <View style={styles.tag}><Text style={styles.tagText}>{params?.tag1}</Text></View>
+                <View style={styles.tag}><Text style={styles.tagText}>{params?.tag2}</Text></View>
+            </View>
+            <Text style={styles.price}>Rp. {params?.price}</Text>
         </View>
-        <Text style={styles.price}>Rp. {params?.price}</Text>
       </View>
       <View style={styles.bottomContainer}>
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>What Will You Get</Text>
+            <View style={styles.sectionTitleContainer}>
+                <Text style={styles.sectionTitle}>What Will You Get</Text>
+            </View>
           <View style={styles.itemsContainer}>
             <View style={styles.item}>
-              <Image source={{ uri: '../assets/images/burger.jpeg' }} style={styles.itemImage} />
+              <Image source={{ uri: params?.whatYouGet1image }} style={styles.itemImage} />
               <Text style={styles.itemText}>{params?.whatYouGet1item}</Text>
             </View>
             <View style={styles.item}>
-              <Image source={{ uri: '../assets/images/fries.jpg' }} style={styles.itemImage} />
+              <Image source={{ uri: params?.whatYouGet2image }} style={styles.itemImage} />
               <Text style={styles.itemText}>{params?.whatYouGet2item}</Text>
             </View>
             <View style={styles.item}>
-              <Image source={{ uri: '../assets/images/cocacola.jpeg' }} style={styles.itemImage} />
+              <Image source={{ uri: params?.whatYouGet3image }} style={styles.itemImage} />
               <Text style={styles.itemText}>{params?.whatYouGet3item}</Text>
             </View>
           </View>
         </View>
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>What People Are Saying</Text>
+            <View style={styles.sectionTitleContainer}>
+                <Text style={styles.sectionTitle}>What People Are Saying</Text>
+            </View>
           <View style={styles.ratingContainer}>
-            <Image source={{ uri: '../assets/images/star-1.jpeg' }} style={styles.starIcon} />
+            <Image source={{ uri: '../assets/images/star-1.png' }} style={styles.starIcon} />
             <Text style={styles.ratingText}>{params?.rating}/5</Text>
           </View>
           <View style={styles.highlights}>
@@ -62,7 +68,9 @@ export default function MenuProfile({item}) {
           </View>
         </View>
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>What You Need To Know</Text>
+            <View style={styles.sectionTitleContainer}>
+                <Text style={styles.sectionTitle}>What You Need To Know</Text>
+            </View>
           <Text>The store will provide packing for your food. But, we suggest you to bring your own bag to carry it home.</Text>
         </View>
         <TouchableOpacity style={styles.buttonContainer} onPress={() => router.push('/cartpage')}>
@@ -76,6 +84,9 @@ export default function MenuProfile({item}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    //backgroundColor: '#0f0f0f',
+    //borderBottomLeftRadius: 30,
+    //borderBottomRightRadius: 30,
   },
   backArrow: {
     position: 'absolute',
@@ -89,13 +100,13 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: 250,
+    height: 300,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
   },
   infoContainer: {
     position: 'absolute',
-    top: 100,
+    top: 160,
     left: 20,
     right: 20,
     zIndex: 3,
@@ -112,6 +123,10 @@ const styles = StyleSheet.create({
   pickupTime: {
     fontSize: 16,
     color: 'white',
+  },
+  tagsAndPrice:{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   tagsContainer: {
     flexDirection: 'row',
@@ -142,6 +157,9 @@ const styles = StyleSheet.create({
   section: {
     marginBottom: 20,
   },
+  sectionTitleContainer:{
+    alignItems: 'center',
+  },
   sectionTitle: {
     fontWeight: 'bold',
     fontSize: 18,
@@ -164,7 +182,8 @@ const styles = StyleSheet.create({
   },
   ratingContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
+    //alignItems: 'center',
+    justifyContent: 'center',
     marginVertical: 10,
   },
   starIcon: {
@@ -189,9 +208,13 @@ const styles = StyleSheet.create({
   buttonContainer: {
     backgroundColor: '#ff9d7b',
     alignItems: 'center',
+    position: 'absolute',
     paddingVertical: 15,
     marginHorizontal: 50,
     borderRadius: 20,
+    bottom: 30,
+    //transform: [{ translateX: -'50%' }],
+    width: '70%',
   },
   buttonText: {
     color: 'white',
