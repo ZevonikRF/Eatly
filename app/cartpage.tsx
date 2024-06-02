@@ -70,7 +70,7 @@ export default function Cart() {
           </View>
         ))}
       </ScrollView>
-      <TouchableOpacity style={styles.completeOrderButton} onPress={() => router.push('/payment')}>
+      <TouchableOpacity style={styles.completeOrderButton} onPress={() => router.push('/redopayment')}>
         <Text style={styles.completeOrderButtonText}>Complete order</Text>
       </TouchableOpacity>
     </View>

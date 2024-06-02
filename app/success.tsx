@@ -1,55 +1,63 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useRouter, useLocalSearchParams } from 'expo-router';
+import { Text, View, StyleSheet, TouchableOpacity, Image, Modal, Pressable } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
-const SuccessPage = () => {
-  return (
-    <div className="success-page">
-      <h1>THANK YOU!</h1>
-      <img src="./assets/images/basket.png" alt="Basket Icon" />
-      <p>You just saved a meal from being wasted!</p>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-      <button style={styles.button}>Got It</button>
-      </div>
-      {/* Add an icon here if desired */}
-    </div>
-  );
-};
+export default function Success(){
+    const router = useRouter();
+    return(
+        <LinearGradient colors={['#ffffff', '#fad3b6']} style={styles.container}>
+            <View style={styles.container}>
+                <View style={styles.middleContentContainer}>
+                    <Text style={styles.thankyouText}>THANK YOU!</Text>
+                    <Image source={require('../assets/images/basket.png')}/>
+                    <Text style={styles.additText}>You just saved a meal from being wasted!</Text>
+                </View>
+                <View style={styles.buttonContainer}>
+                    <Pressable style={styles.backButton} onPress={() => router.push('/mainmenu')}>
+                        <Text style={styles.buttonText}>Got It</Text>
+                    </Pressable>
+                </View>
+            </View>
+        </LinearGradient>
+    );
+}
 
-const styles = {
-  container: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    minHeight: '100vh',
-    background: `linear-gradient(to bottom, #ffffff, #fad3b6)`, // Gradient background
-  },
-  successPage: {
-    padding: '2rem',
-    borderRadius: '10px',
-    backgroundColor: '#fff', // White background for content area
-    boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.1)', // Subtle shadow
-    maxHeight: '100%', // Set max height for scroll view
-  },
-  button: {
-    marginTop: '2rem',
-    padding: '1rem 2rem',
-    justify: 'center',
-    align: 'center',
-    backgroundColor: '#FFF8F2', // Button background color
-    color: '#FF9D7B', // Button text color
-    border: 'none',
-    borderRadius: '30px',
-    cursor: 'pointer',
-    width: '200px',
-    height: '50px',
-  },
-};
+const styles = StyleSheet.create({
+    container:{
+        flex: 1,
+    },
+    middleContentContainer:{
+        flex: 2,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    thankyouText:{
+        fontSize: 50,
+        fontWeight: 'bold',
+        marginBottom: 10,
+    },
 
-const App = () => {
-  return (
-    <div className="container" style={styles.container}>
-      <SuccessPage className="thankyou-page" style={styles.successPage} />
-    </div>
-  );
-};
+    additText:{
+        fontWeight: 'bold',
+        marginTop: 10,
+    },
 
-export default App;
+    buttonContainer:{
+        alignItems: 'center',
+        marginBottom: 20,
+    },
+    backButton:{
+        width: '90%',
+        height: 55,
+        backgroundColor: '#ffffff',
+        borderRadius: 30,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    buttonText:{
+        fontSize: 15,
+        color: '#ff9d7b',
+        fontWeight: 'bold',
+    }
+})
