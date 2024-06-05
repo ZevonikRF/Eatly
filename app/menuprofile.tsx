@@ -1,11 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image, Modal, Pressable } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
+import { CartContext } from '@/components/cartcontainer';
 
 export default function MenuProfile({item}) {
   const router = useRouter();
   const params = useLocalSearchParams();
   const [modalVisible,setModalVisible] = useState(false);
+  const { addToCart } = useContext(CartContext);
+  const handleAddToCart = () => {
+    addToCart({
+      id: item.id,
+      name: item.restoname,
+      price: item.price,
+      quantity: 1,
+      image: { uri: item.image },
+    });
+    router.push('/cartpage');
+  };
+  
   return (
     <View style={styles.container}>
       <Image source={{ uri: params?.image }} style={styles.image} />
@@ -75,7 +88,7 @@ export default function MenuProfile({item}) {
         </View>
         {/*<TouchableOpacity style={styles.buttonContainer} onPress={() => router.push('/cartpage')}>*/}
         {/*<Pressable style={styles.buttonContainer} onPress={() => setModalVisible(!modalVisible)*/}
-        <Pressable style={styles.buttonContainer} onPress={() => router.push('/cartpage')}>
+        <Pressable style={styles.buttonContainer} onPress={handleAddToCart}>
           <Text style={styles.buttonText}>Add to Cart</Text>
         </Pressable>
         <Modal visible={modalVisible} onRequestClose={() => setModalVisible(!modalVisible)} transparent>

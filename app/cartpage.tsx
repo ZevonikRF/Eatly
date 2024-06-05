@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { useRouter } from 'expo-router';
+import { CartContext } from '@/components/cartcontainer';
 
 export default function Cart() {
   const router = useRouter();
+  const { cartItems, updateQuantity } = useContext(CartContext);
 
-  const [cartItems, setCartItems] = useState([
+  {/*const [cartItems, setCartItems] = useState([
     {
       id: 1,
       name: "Nasi Goreng",
@@ -21,8 +23,9 @@ export default function Cart() {
       image: require('../assets/images/burger.jpeg'),
     },
   ]);
-
-  const handleQuantityChange = (id: any, delta: any) => {
+*/}
+  
+{/* const handleQuantityChange = (id: any, delta: any) => {
     setCartItems(prevItems => {
       return prevItems.map(item => {
         if (item.id === id) {
@@ -34,6 +37,10 @@ export default function Cart() {
         return item;
       });
     });
+  };*/}
+  
+  const handleQuantityChange = (id: number, delta: number) => {
+    updateQuantity(id, delta);
   };
 
   const handleCompleteOrder = () => {
@@ -51,7 +58,7 @@ export default function Cart() {
       </View>
       <Text style={styles.swipeText}>swipe on an item to delete</Text>
       <ScrollView>
-        {cartItems.map(item => (
+        {cartItems.map((item) => (
           <View key={item.id} style={styles.cartItem}>
             <Image source={item.image} style={styles.itemImage} />
             <View style={styles.itemDetails}>
@@ -70,6 +77,26 @@ export default function Cart() {
           </View>
         ))}
       </ScrollView>
+      {/* <ScrollView>
+        {cartItems.map(item => (
+          <View key={item.id} style={styles.cartItem}>
+            <Image source={item.image} style={styles.itemImage} />
+            <View style={styles.itemDetails}>
+              <Text style={styles.itemName}>{item.name}</Text>
+              <Text style={styles.itemPrice}>Rp {item.price.toLocaleString()}</Text>
+              <View style={styles.quantityContainer}>
+                <TouchableOpacity onPress={() => handleQuantityChange(item.id, -1)}>
+                  <Text style={styles.quantityButton}>-</Text>
+                </TouchableOpacity>
+                <Text style={styles.quantity}>{item.quantity}</Text>
+                <TouchableOpacity onPress={() => handleQuantityChange(item.id, 1)}>
+                  <Text style={styles.quantityButton}>+</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        ))}
+      </ScrollView> */}
       <TouchableOpacity style={styles.completeOrderButton} onPress={() => router.push('/redopayment')}>
         <Text style={styles.completeOrderButtonText}>Complete order</Text>
       </TouchableOpacity>
