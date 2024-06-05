@@ -49,7 +49,7 @@ export default function MyProfile() {
         <Text style={styles.menuItemArrow}>›</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.menuItem}>
-        <Text style={styles.menuItemText}>Pending reviews</Text>
+        <Text style={styles.menuItemText}>Reviews</Text>
         <Text style={styles.menuItemArrow}>›</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.menuItem}>
