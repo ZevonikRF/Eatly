@@ -6,6 +6,9 @@ export default function RedoPayment(){
     const router = useRouter();
     const dummyPrice = 18000;
     const deliveryPrice = 5000;
+    const [selectedRadioAtas, setSelectedRadioAtas] = useState(1);
+    const [selectedRadioBawah, setSelectedRadioBawah] = useState(3);
+    const toPayment = () => {selectedRadioAtas == 1 ? router.push('/cardpayment') : router.push('/virtualaccount')};
     return(
         <View style={styles.container}>
             <View style={styles.upperNav}>
@@ -18,14 +21,18 @@ export default function RedoPayment(){
                 <Text style={styles.paymentMethodText}>Payment Method</Text>
                 <View style={styles.paymentMethodBox}>
                     <View style={styles.upperChoiceContainer}>
-                        <TouchableOpacity>
-                            <View style={styles.radio}></View>
+                        <TouchableOpacity onPress={() => setSelectedRadioAtas(1)}>
+                            <View style={styles.radio}>
+                                {selectedRadioAtas==1? <View style={styles.radioDalem}></View> :null}
+                            </View>
                         </TouchableOpacity>
                         <Text>Credit Card</Text>
                     </View>
                     <View style={styles.lowerChoiceContainer}>
-                        <TouchableOpacity>
-                            <View style={styles.radio}></View>
+                        <TouchableOpacity onPress={() => setSelectedRadioAtas(2)}>
+                            <View style={styles.radio}>
+                                {selectedRadioAtas==2? <View style={styles.radioDalem}></View> :null}
+                            </View>
                         </TouchableOpacity>
                         <Text>Virtual Account</Text>
                     </View>
@@ -43,14 +50,18 @@ export default function RedoPayment(){
                 <Text style={styles.deliveryText}>Delivery Method</Text>
                 <View style={styles.deliveryBox}>
                     <View style={styles.upperDeliveryContainer}> 
-                        <TouchableOpacity>
-                            <View style={styles.radio}></View>
+                        <TouchableOpacity onPress={() => setSelectedRadioBawah(3)}>
+                            <View style={styles.radio}>
+                                {selectedRadioBawah==3? <View style={styles.radioDalem}></View> :null}
+                            </View>
                         </TouchableOpacity>
                         <Text>Pick Up</Text>
                     </View>
                     <View style={styles.lowerDeliveryContainer}> 
-                        <TouchableOpacity>
-                            <View style={styles.radio}></View>
+                        <TouchableOpacity onPress={() => setSelectedRadioBawah(4)}>
+                            <View style={styles.radio}>
+                                {selectedRadioBawah==4? <View style={styles.radioDalem}></View> :null}
+                            </View>
                         </TouchableOpacity>
                         <View style={styles.pickupDeliveryContainer}>
                             <Text>Delivery (Rp {deliveryPrice})</Text>
@@ -66,7 +77,7 @@ export default function RedoPayment(){
                     </View>  
                 </View>
                 <View style={styles.pickupDeliveryContainer}>
-                    <Pressable style={styles.paymentProceedButton} onPress={() => router.push('/success')}>
+                    <Pressable style={styles.paymentProceedButton} onPress={toPayment}>
                         <Text style={styles.paymentProceedText}>Proceed to Payment</Text>
                     </Pressable>
                 </View>
@@ -119,6 +130,15 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         marginRight: 10,
     },
+
+    radioDalem:{
+        backgroundColor: '#000000',
+        width: 10,
+        height: 10,
+        margin: 2,
+        borderRadius: 20,
+    },
+
     lowerChoiceContainer:{
         flexDirection: 'row',
         marginLeft: 20,
