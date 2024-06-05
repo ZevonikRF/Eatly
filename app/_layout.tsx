@@ -19,6 +19,8 @@ export default function Layout() {
         <Stack.Screen name="cartpage" options={{ headerShown: false }} />
         <Stack.Screen name="payment" options={{ headerShown: false }} />
         <Stack.Screen name="redopayment" options={{ headerShown: false }} />
+        <Stack.Screen name="cardpayment" options={{ headerShown: false }} />
+        <Stack.Screen name="virtualaccount" options={{ headerShown: false }} />
         <Stack.Screen name="success" options={{ headerShown: false }} />
       </Stack>
   );
