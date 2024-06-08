@@ -1,14 +1,36 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
+import { useRouter } from 'expo-router';
 
 export default function History() {
-  const [activeTab, setActiveTab] = useState('Finished');
+  const [activeTab, setActiveTab] = useState('On Going');
+  const router = useRouter();
+
+  const handleOrderPress = (order) => {
+    router.push({
+      pathname: 'orderstatus',
+      params: { order },
+    });
+  };
+
+  const ongoingOrder = {
+    title: 'Burger Bang',
+    id: 'BB312',
+    subtotal: 'Rp 20.000',
+    tax: '0',
+    discount: '0',
+    address: 'Jl. Dago No. 31, Dago, Bandung',
+    pickupTime: '12 April 2024, 16.30 - 18.00',
+  };
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => console.log('Back pressed')}>
-          <Text style={styles.backButton}>{'<'}</Text>
+        <TouchableOpacity onPress={() => router.push('/mainmenu')}>
+          <Image
+            style={styles.backButton}
+            source={require('../assets/images/back_arrow.png')}
+          />
         </TouchableOpacity>
         <Text style={styles.title}>History</Text>
       </View>
@@ -27,6 +49,21 @@ export default function History() {
         </TouchableOpacity>
       </View>
       <ScrollView contentContainerStyle={styles.contentContainer}>
+        {activeTab === 'On Going' && (
+          <TouchableOpacity style={styles.card} onPress={() => handleOrderPress(ongoingOrder)}>
+            <Image
+              style={styles.cardImage}
+              source={{ uri: 'https://via.placeholder.com/150' }} // Replace with your image source
+            />
+            <View style={styles.cardContent}>
+              <Text style={styles.cardTitle}>Burger Bang</Text>
+              <Text style={styles.cardDate}>12 April 2024, 16.30 - 18.00</Text>
+              <View style={styles.statusContainer}>
+                <Text style={styles.statusText}>Pending Pick Up</Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+        )}
         {activeTab === 'Finished' && (
           <View style={styles.card}>
             <Image
@@ -35,7 +72,8 @@ export default function History() {
             />
             <View style={styles.cardContent}>
               <Text style={styles.cardTitle}>Salad Start!</Text>
-              <Text style={styles.cardDate}>10 April 2024</Text>
+              <Text style={styles.cardDate}>
+              10 April 2024</Text>
               <View style={styles.statusContainer}>
                 <Text style={styles.statusText}>Pending Review</Text>
               </View>
@@ -45,7 +83,7 @@ export default function History() {
       </ScrollView>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -58,8 +96,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   backButton: {
-    fontSize: 18,
-    color: '#000',
+    width: 24,
+    height: 24,
   },
   title: {
     fontSize: 24,
@@ -117,10 +155,11 @@ const styles = StyleSheet.create({
   },
   statusContainer: {
     marginTop: 5,
-    paddingHorizontal: 10,
+    paddingHorizontal: 8,
     paddingVertical: 2,
     backgroundColor: '#FF6B6B',
     borderRadius: 5,
+    alignSelf: 'flex-start',
   },
   statusText: {
     color: '#fff',
