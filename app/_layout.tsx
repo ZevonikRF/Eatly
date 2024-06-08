@@ -16,6 +16,7 @@ export default function Layout() {
         <Stack.Screen name="myprofile" options={{ headerShown: false }} />
         <Stack.Screen name="changeprofile" options={{ headerShown: false }} />
         <Stack.Screen name="menuprofile" options={{ headerShown: false }} />
+        <Stack.Screen name="orderstatus" options={{ headerShown: false }} />
         <Stack.Screen name="voucher" options={{ headerShown: false }} />
         <Stack.Screen name="cartpage" options={{ headerShown: false }} />
         <Stack.Screen name="payment" options={{ headerShown: false }} />
