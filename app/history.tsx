@@ -53,7 +53,7 @@ export default function History() {
           <TouchableOpacity style={styles.card} onPress={() => handleOrderPress(ongoingOrder)}>
             <Image
               style={styles.cardImage}
-              source={{ uri: 'https://via.placeholder.com/150' }} // Replace with your image source
+              source={{ uri: 'https://asset.kompas.com/crops/JFC1_i_OaGvcNEviEw4WKk-r3qQ=/12x51:892x637/750x500/data/photo/2022/03/05/622358ed771fb.jpg' }} // Replace with your image source
             />
             <View style={styles.cardContent}>
               <Text style={styles.cardTitle}>Burger Bang</Text>
@@ -68,10 +68,10 @@ export default function History() {
           <View style={styles.card}>
             <Image
               style={styles.cardImage}
-              source={{ uri: 'https://via.placeholder.com/150' }} // Replace with your image source
+              source={{ uri: 'https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2023/07/13073811/Praktis-dengan-Bahan-Sederhana-Ini-Resep-Nasi-Goreng-Special-1.jpg.webp' }} // Replace with your image source
             />
             <View style={styles.cardContent}>
-              <Text style={styles.cardTitle}>Salad Start!</Text>
+              <Text style={styles.cardTitle}>Nasi Goreng</Text>
               <Text style={styles.cardDate}>
               10 April 2024</Text>
               <View style={styles.statusContainer}>
