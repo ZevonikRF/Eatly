@@ -23,6 +23,7 @@ export default function Layout() {
         <Stack.Screen name="cardpayment" options={{ headerShown: false }} />
         <Stack.Screen name="virtualaccount" options={{ headerShown: false }} />
         <Stack.Screen name="success" options={{ headerShown: false }} />
+        <Stack.Screen name="review" options={{ headerShown: false }} />
       </Stack>
   );
 }
