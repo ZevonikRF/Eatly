@@ -49,7 +49,6 @@ export default function Cart() {
         </TouchableOpacity>
         <Text style={styles.header}>Cart</Text>
       </View>
-      <Text style={styles.swipeText}>swipe on an item to delete</Text>
       <ScrollView>
         {cartItems.map(item => (
           <View key={item.id} style={styles.cartItem}>
